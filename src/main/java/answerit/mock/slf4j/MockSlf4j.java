@@ -7,6 +7,13 @@ import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Helper class that mocks {@link Logger} fields of a given class. 'final' and 'static'
+ * fields can be mocked, too.
+ * 
+ * @author Daniel B.
+ *
+ */
 public final class MockSlf4j {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MockSlf4j.class);
 
@@ -14,24 +21,70 @@ public final class MockSlf4j {
 		//hide me
 	}
 
+	/**
+	 * Mocks static {@link Logger} fields declared for the given class. 
+	 * 'final' and 'static' fields can be mocked, too.
+	 * 
+	 * <p><b>Example:</b></p>
+	 * <p>
+	 * <pre>
+	 * final class ClassWithStaticLogger 
+	 * {
+	 * 	private static final Logger LOGGER = LoggerFactory.getLogger(ClassWithStaticLogger.class);
+	 * }
+	 * 
+	 * ....
+	 * Logger mockedLogger = MockSlf4j.mockStatic(ClassWithStaticLogger.class, "LOGGER");
+	 * </pre>
+	 * </p>
+	 * 
+	 * @param klass
+	 * 		The class for which a static {@link Logger} fields has been declared. 
+	 * @param loggerName
+	 * 		The static field name.
+	 * @return
+	 * 		The instance of the mock {@link Logger}.
+	 */
 	public static Logger mockStatic(Class<?> klass, String loggerName) {
 		return mock(null, klass, loggerName);
 	}
 
+	/**
+	 * Mocks non static {@link Logger} fields for the given instance.
+	 * 
+	 * <p><b>Example:</b></p>
+	 * <p>
+	 * <pre>
+	 * final class ClassWithNonStaticLogger 
+	 * {
+	 * 	private final Logger logger = LoggerFactory.getLogger(ClassWithNonStaticLogger.class);
+	 * }
+	 * 
+	 * ....
+	 * ClassWithNonStaticLogger instance = new ClassWithNonStaticLogger();
+	 * Logger mockedLogger = MockSlf4j.mock(instance, "logger");
+	 * </pre>
+	 * </p>
+	 * @param instance
+	 * 		The instance for which a non static {@link Logger} fields has been declared.
+	 * @param loggerName
+	 * 		The static field name.
+	 * @return
+	 * 		The instance of the mock {@link Logger}.
+	 */
 	public static Logger mock(Object instance, String loggerName) {
 		Objects.requireNonNull(instance, "Expected not null object");
 		return mock(instance, instance.getClass(), loggerName);
 	}
 
+	//TODO: throw more detailed exception
 	private static Logger mock(Object instance, Class<?> klass, String loggerName) {
 		
 		if(klass != null)
 			try {
 				Class.forName(klass.getName());
-				//MockSlf4j.class.getClassLoader().loadClass(klass.getName());
 			} catch (ClassNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				throw new RuntimeException(e1);
 			}
 		MockSlf4jLogger result = new MockSlf4jLogger();
 
