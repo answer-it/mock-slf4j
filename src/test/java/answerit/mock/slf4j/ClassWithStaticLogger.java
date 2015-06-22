@@ -9,11 +9,11 @@ final class ClassWithStaticLogger
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ClassWithStaticLogger.class);
 
-    public static Logger getLogger() {
-    	return LOGGER;
-    }
+	public static Logger getLogger() {
+		return LOGGER;
+	}
 
-    public static void debug(String msg) {
-    	LOGGER.debug(msg);
-    }
+	public static void debug(String msg) {
+		LOGGER.debug(msg);
+	}
 }
