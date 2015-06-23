@@ -125,4 +125,12 @@ public final class MockSlf4jMatchers {
 	public static <T> org.hamcrest.Matcher<T> containsAtLeastOneMarker()  {
 		return answerit.mock.slf4j.LoggingEventMarkerMatcher.<T>containsAtLeastOneMarker() ;
 	}
+
+	public static <T> org.hamcrest.Matcher<T> hasMessage(String message)  {
+		return answerit.mock.slf4j.LoggingEventMessageMatcher.<T>hasMessage(message) ;
+	}
+
+	public static <T> org.hamcrest.Matcher<T> hasMessageThat(Matcher<T> matcher)  {
+		return answerit.mock.slf4j.LoggingEventMessageMatcher.<T>hasMessageThat(matcher) ;
+	}
 }
