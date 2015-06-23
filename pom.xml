@@ -8,35 +8,64 @@
 	<packaging>jar</packaging>
 
 	<name>mock-slf4j</name>
-	<url>http://www.answer-it.org</url>
+	<url>https://github.com/answer-it/mock-slf4j/</url>
+
+	<organization>
+		<name>anSWer IT</name>
+		<url>http://www.answer-it.org/</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/answer-it/mock-slf4j/</url>
+		<connection>scm:git:git://github.com/answer-it/mock-slf4j</connection>
+		<developerConnection>scm:git:git@github.com:answer-it/mock-slf4j</developerConnection>
+	</scm>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<slf4j.version>1.7.12</slf4j.version>
+		<hamcrest.version>1.3</hamcrest.version>
+		<junit.version>4.12</junit.version>
+		<log4j.version>2.3</log4j.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>${hamcrest.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>2.3</version>
+			<version>${log4j.version}</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.12</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-slf4j-impl</artifactId>
-			<version>2.3</version>
+			<version>${log4j.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
 </project>
