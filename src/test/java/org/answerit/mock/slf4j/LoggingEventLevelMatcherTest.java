@@ -1,6 +1,6 @@
 package org.answerit.mock.slf4j;
 
-import static org.answerit.mock.slf4j.LoggingEventLevelMatcher.hasLevel;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasLevel;
 import static org.answerit.mock.slf4j.LoggingLevel.DEBUG;
 import static org.answerit.mock.slf4j.LoggingLevel.ERROR;
 import static org.answerit.mock.slf4j.LoggingLevel.INFO;

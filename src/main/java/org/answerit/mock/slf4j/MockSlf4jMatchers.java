@@ -114,6 +114,10 @@ public final class MockSlf4jMatchers {
 		return org.answerit.mock.slf4j.LoggingEventParamsMatcher.<T>hasNoParam();
 	}
 
+	public static <T> org.hamcrest.Matcher<T> hasLevel(LoggingLevel level)  {
+		return org.answerit.mock.slf4j.LoggingEventLevelMatcher.<T>hasLevel(level) ;
+	}
+
 	public static <T> org.hamcrest.Matcher<T> containsMarker(String name)  {
 		return org.answerit.mock.slf4j.LoggingEventMarkerMatcher.<T>containsMarker(name) ;
 	}
