@@ -1,4 +1,4 @@
-package answerit.mock.slf4j;
+package org.answerit.mock.slf4j;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

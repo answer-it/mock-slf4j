@@ -1,15 +1,16 @@
-package answerit.mock.slf4j;
+package org.answerit.mock.slf4j;
 
-import static answerit.mock.slf4j.LoggingEventLevelMatcher.hasLevel;
-import static answerit.mock.slf4j.LoggingLevel.DEBUG;
-import static answerit.mock.slf4j.LoggingLevel.ERROR;
-import static answerit.mock.slf4j.LoggingLevel.INFO;
-import static answerit.mock.slf4j.LoggingLevel.TRACE;
-import static answerit.mock.slf4j.LoggingLevel.WARN;
-import static answerit.mock.slf4j.MockSlf4jLoggerMatcher.hasEntriesCount;
-import static answerit.mock.slf4j.MockSlf4jMatchers.that;
+import static org.answerit.mock.slf4j.LoggingEventLevelMatcher.hasLevel;
+import static org.answerit.mock.slf4j.LoggingLevel.DEBUG;
+import static org.answerit.mock.slf4j.LoggingLevel.ERROR;
+import static org.answerit.mock.slf4j.LoggingLevel.INFO;
+import static org.answerit.mock.slf4j.LoggingLevel.TRACE;
+import static org.answerit.mock.slf4j.LoggingLevel.WARN;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.that;
 import static org.junit.Assert.assertThat;
 
+import org.answerit.mock.slf4j.MockSlf4jLogger;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;

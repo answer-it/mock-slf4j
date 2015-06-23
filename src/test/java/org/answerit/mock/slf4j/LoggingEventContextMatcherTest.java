@@ -1,10 +1,10 @@
-package answerit.mock.slf4j;
+package org.answerit.mock.slf4j;
 
-import static answerit.mock.slf4j.MockSlf4jMatchers.containsMDC;
-import static answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
-import static answerit.mock.slf4j.MockSlf4jMatchers.hasMDC;
-import static answerit.mock.slf4j.MockSlf4jMatchers.hasNoMDC;
-import static answerit.mock.slf4j.MockSlf4jMatchers.that;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.containsMDC;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasMDC;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasNoMDC;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.that;
 import static org.hamcrest.CoreMatchers.anyOf;
 import static org.junit.Assert.assertThat;
 

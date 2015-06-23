@@ -1,10 +1,10 @@
-package answerit.mock.slf4j;
+package org.answerit.mock.slf4j;
 
-import static answerit.mock.slf4j.MockSlf4jMatchers.containsAtLeastOneMarker;
-import static answerit.mock.slf4j.MockSlf4jMatchers.containsMarker;
-import static answerit.mock.slf4j.MockSlf4jMatchers.containsNoMarker;
-import static answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
-import static answerit.mock.slf4j.MockSlf4jMatchers.that;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.containsAtLeastOneMarker;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.containsMarker;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.containsNoMarker;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.that;
 import static org.junit.Assert.assertThat;
 
 import org.junit.After;

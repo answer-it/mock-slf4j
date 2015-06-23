@@ -1,5 +1,6 @@
-package answerit.mock.slf4j;
+package org.answerit.mock.slf4j;
 
+import org.answerit.mock.slf4j.MockSlf4jLogger;
 import org.junit.After;
 import org.junit.Before;
 import org.slf4j.Logger;

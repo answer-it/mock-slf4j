@@ -1,4 +1,4 @@
-package answerit.mock.slf4j;
+package org.answerit.mock.slf4j;
 
 import static org.hamcrest.CoreMatchers.anything;
 
