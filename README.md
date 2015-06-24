@@ -156,13 +156,25 @@ assertThat(logger, hasEntriesCount(2, that(containMarker("MARKER_NAME"))));
 
 ####More complex test
 ```java
-assertThat(mockedLogger, hasAtLeastOneEntryThat(allOf(
+Map<String, String> contextMap = new HashMap<String, String>();
+contextMap.put("authenticationToken", null);
+contextMap.put("ipAddress", "192.168.254.254");
+contextMap.put("method", "GET");
+contextMap.put("request", "/users");
+MDC.setContextMap(contextMap);
+
+Marker securityAlertMarker = MarkerFactory.getDetachedMarker("SECURITY_ALERT");
+
+logger.error(securityAlertMarker, "Usuer not currently logged in");
+
+assertThat(logger, hasAtLeastOneEntryThat(allOf(
 	haveLevel(LoggingLevel.ERROR),
 	containMDC("authenticationToken", nullValue()),
+	containMDC("request", anything()),
 	containMarker("SECURITY_ALERT"),
 	haveMessageThat(allOf(
-		containString("Invalid"),
-		containString("username")
+		containsString("not"),
+		containsString("logged")
 		)))
 	));
 ```
