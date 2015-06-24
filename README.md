@@ -155,6 +155,33 @@ assertThat(logger, hasEntriesCount(1, that(containNoMarker())));
 assertThat(logger, hasEntriesCount(2, that(containMarker("MARKER_NAME"))));
 ```
 
+####Test cause
+```java
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveCause;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveCauseMessage;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.that;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertThat;
+
+//Checks the cause recursively
+assertThat(logger, hasEntriesCount(1, that(haveCause(instanceOf(NullPointerException.class)))));
+
+//Checks recursively for a cause with the given message
+assertThat(logger, hasEntriesCount(1, that(haveCauseMessage(that(containsString("Invalid parameter"))))));
+```
+
+####Test thread
+```java
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasAtLeastOneEntry;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.fromThreadWithName;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
+
+assertThat(logger, hasAtLeastOneEntry(fromThreadWithName(equalTo("main"))));
+```
+
 ####More complex test
 ```java
 Map<String, String> contextMap = new HashMap<String, String>();
