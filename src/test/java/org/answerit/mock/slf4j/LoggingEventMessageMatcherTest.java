@@ -1,6 +1,6 @@
 package org.answerit.mock.slf4j;
 
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasAtLeastOneEntryThat;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasAtLeastOneEntry;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveMessage;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.that;
@@ -28,9 +28,9 @@ public class LoggingEventMessageMatcherTest {
 		logger.debug(MESSAGE);
 		
 		assertThat(logger, hasEntriesCount(1));
-		assertThat(logger, hasAtLeastOneEntryThat(haveMessage(equalTo(MESSAGE))));
-		assertThat(logger, hasAtLeastOneEntryThat(haveMessage(that(startsWith("May")))));
-		assertThat(logger, not(hasAtLeastOneEntryThat(haveMessage(that(startsWith("may"))))));
+		assertThat(logger, hasAtLeastOneEntry(that(haveMessage(equalTo(MESSAGE)))));
+		assertThat(logger, hasAtLeastOneEntry(that(haveMessage(that(startsWith("May"))))));
+		assertThat(logger, not(hasAtLeastOneEntry(that(haveMessage(that(startsWith("may")))))));
 	}
 
 }

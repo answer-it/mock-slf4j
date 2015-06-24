@@ -116,11 +116,11 @@ public class MockSlf4jLoggerMatcher<T> extends BaseMatcher<T> {
 		return new MockSlf4jLoggerMatcher<T>(Comparator.LT, Integer.valueOf(count), matcher);
 	}
 
-	public static <T> Matcher<T> hasAllEntriesThat(Matcher<?> matcher) {
+	public static <T> Matcher<T> hasAllEntries(Matcher<?> matcher) {
 		return new MockSlf4jLoggerMatcher<T>(Comparator.EQ, null, matcher);
 	}
 
-	public static <T> Matcher<T> hasAtLeastOneEntryThat(Matcher<?> matcher) {
+	public static <T> Matcher<T> hasAtLeastOneEntry(Matcher<?> matcher) {
 		return new MockSlf4jLoggerMatcher<T>(Comparator.GTE, Integer.valueOf(1), matcher);
 	}
 

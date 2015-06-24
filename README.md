@@ -85,10 +85,10 @@ import static org.junit.Assert.assertThat;
 
 ....
 //Asserts that at least one entry with 'a message' message has been logged 
-assertThat(logger, hasAtLeastOneEntryThat(haveMessage(equalTo("Message"))));
+assertThat(logger, hasAtLeastOneEntry(that(haveMessage(equalTo("Message")))));
 
 //Asserts that at least one message that starts with 'Hello' has been logged
-assertThat(logger, hasAtLeastOneEntryThat(haveMessage(that(startsWith("Hello")))));
+assertThat(logger, hasAtLeastOneEntry(that(haveMessage(that(startsWith("Hello"))))));
 ```
 
 ###Test message format parameters
@@ -166,9 +166,9 @@ MDC.setContextMap(contextMap);
 
 Marker securityAlertMarker = MarkerFactory.getDetachedMarker("SECURITY_ALERT");
 
-logger.error(securityAlertMarker, "Usuer not currently logged in");
+logger.error(securityAlertMarker, "User not currently logged in");
 
-assertThat(logger, hasAtLeastOneEntryThat(allOf(
+assertThat(logger, hasAtLeastOneEntry(that(allOf(
 	haveLevel(LoggingLevel.ERROR),
 	containMDC("authenticationToken", nullValue()),
 	containMDC("request", anything()),
@@ -177,5 +177,5 @@ assertThat(logger, hasAtLeastOneEntryThat(allOf(
 		containsString("not"),
 		containsString("logged")
 		)))
-	));
+	)));
 ```

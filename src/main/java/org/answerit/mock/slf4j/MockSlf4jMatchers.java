@@ -48,12 +48,12 @@ public final class MockSlf4jMatchers {
 		return org.answerit.mock.slf4j.MockSlf4jLoggerMatcher.<T>hasLessEntriesThan(count, matcher);
 	}
 
-	public static <T> org.hamcrest.Matcher<T> hasAllEntriesThat(Matcher<?> matcher) {
-		return org.answerit.mock.slf4j.MockSlf4jLoggerMatcher.<T>hasAllEntriesThat(matcher);
+	public static <T> org.hamcrest.Matcher<T> hasAllEntries(Matcher<?> matcher) {
+		return org.answerit.mock.slf4j.MockSlf4jLoggerMatcher.<T>hasAllEntries(matcher);
 	}
 
-	public static <T> org.hamcrest.Matcher<T> hasAtLeastOneEntryThat(Matcher<?> matcher) {
-		return org.answerit.mock.slf4j.MockSlf4jLoggerMatcher.<T>hasAtLeastOneEntryThat(matcher);
+	public static <T> org.hamcrest.Matcher<T> hasAtLeastOneEntry(Matcher<?> matcher) {
+		return org.answerit.mock.slf4j.MockSlf4jLoggerMatcher.<T>hasAtLeastOneEntry(matcher);
 	}
 
 	public static <T> org.hamcrest.Matcher<T> hasNoEntries() {
