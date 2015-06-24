@@ -4,7 +4,7 @@ import static org.answerit.mock.slf4j.MockSlf4jMatchers.containMDC;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.containMarker;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasAtLeastOneEntryThat;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveLevel;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveMessageThat;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveMessage;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.anything;
 import static org.hamcrest.CoreMatchers.containsString;
@@ -51,7 +51,7 @@ public class ComplexMatchersTest extends AbstractMockSlf4jLoggerTest {
 				containMDC("authenticationToken", nullValue()),
 				containMDC("request", anything()),
 				containMarker("SECURITY_ALERT"),
-				haveMessageThat(allOf(
+				haveMessage(allOf(
 						containsString("not"),
 						containsString("logged")
 						)))

@@ -1,7 +1,5 @@
 package org.answerit.mock.slf4j;
 
-import java.util.Objects;
-
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -9,11 +7,9 @@ import org.hamcrest.Matcher;
 
 public class LoggingEventMessageMatcher<T> extends BaseMatcher<T> {
 
-	private final String message;
 	private final Matcher<T> matcher;
 
-	private LoggingEventMessageMatcher(String message, Matcher<T> matcher) {
-		this.message = message;
+	private LoggingEventMessageMatcher(Matcher<T> matcher) {
 		this.matcher = matcher;
 	}
 
@@ -34,14 +30,11 @@ public class LoggingEventMessageMatcher<T> extends BaseMatcher<T> {
 		String logMessage = loggingEvent.getMessage();
 		if(this.matcher != null)
 			return this.matcher.matches(logMessage);
-		return Objects.equals(logMessage, message);
+
+		return false;
 	}
 
-	public static <T> Matcher<T> haveMessage(String message) {
-		return new LoggingEventMessageMatcher<T>(message, null);
-	}
-	
-	public static <T> Matcher<T> haveMessageThat(Matcher<T> matcher) {
-		return new LoggingEventMessageMatcher<T>(null, matcher);
+	public static <T> Matcher<T> haveMessage(Matcher<T> matcher) {
+		return new LoggingEventMessageMatcher<T>(matcher);
 	}
 }

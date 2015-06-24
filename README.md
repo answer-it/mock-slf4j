@@ -76,18 +76,19 @@ assertThat(mockedLogger, hasEntriesCount(5));
 
 ####Test message content
 ```java
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveMessage;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveMessageThat;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasAtLeastOneEntryThat;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveMessage;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.that;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.assertThat;
 
 ....
 //Asserts that at least one entry with 'a message' message has been logged 
-assertThat(mockedLogger, hasAtLeastOneEntryThat(haveMessage("a message")));
+assertThat(logger, hasAtLeastOneEntryThat(haveMessage(equalTo("Message"))));
 
 //Asserts that at least one message that starts with 'Hello' has been logged
-assertThat(mockedLogger, hasAtLeastOneEntryThat(haveMessageThat(startsWith("Hello"))));
+assertThat(logger, hasAtLeastOneEntryThat(haveMessage(that(startsWith("Hello")))));
 ```
 
 ###Test message format parameters
@@ -121,11 +122,11 @@ import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.that;
 import static org.junit.Assert.assertThat;
 
-assertThat(mockedLogger, hasEntriesCount(1, that(haveLevel(TRACE))));
-assertThat(mockedLogger, hasEntriesCount(1, that(haveLevel(DEBUG))));
-assertThat(mockedLogger, hasEntriesCount(1, that(haveLevel(INFO))));
-assertThat(mockedLogger, hasEntriesCount(1, that(haveLevel(WARN))));
-assertThat(mockedLogger, hasEntriesCount(1, that(haveLevel(ERROR))));
+assertThat(mockedLogger, hasEntriesCount(6, that(haveLevel(TRACE))));
+assertThat(mockedLogger, hasEntriesCount(5, that(haveLevel(DEBUG))));
+assertThat(mockedLogger, hasEntriesCount(4, that(haveLevel(INFO))));
+assertThat(mockedLogger, hasEntriesCount(3, that(haveLevel(WARN))));
+assertThat(mockedLogger, hasEntriesCount(2, that(haveLevel(ERROR))));
 ```
 
 ####Test mapped diagnostic context (MDC)
@@ -172,7 +173,7 @@ assertThat(logger, hasAtLeastOneEntryThat(allOf(
 	containMDC("authenticationToken", nullValue()),
 	containMDC("request", anything()),
 	containMarker("SECURITY_ALERT"),
-	haveMessageThat(allOf(
+	haveMessage(allOf(
 		containsString("not"),
 		containsString("logged")
 		)))
