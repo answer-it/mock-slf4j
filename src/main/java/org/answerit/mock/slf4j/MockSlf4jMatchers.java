@@ -183,4 +183,11 @@ public final class MockSlf4jMatchers {
 	public static <T> org.hamcrest.Matcher<T> haveCauseMessage(Matcher<T> matcher)  {
 		return org.answerit.mock.slf4j.LoggingEventCauseMsgMatcher.<T>haveCauseMessage(matcher) ;
 	}
+
+	//---------------------------------------------------------
+	// org.answerit.mock.slf4j.LoggingEventCauseMsgMatcher
+	//---------------------------------------------------------
+	public static <T> org.hamcrest.Matcher<T> fromThreadWithName(Matcher<T> matcher)  {
+		return org.answerit.mock.slf4j.LoggingEventThreadNameMatcher.<T>fromThreadWithName(matcher) ;
+	}
 }
