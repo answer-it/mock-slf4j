@@ -76,42 +76,42 @@ assertThat(mockedLogger, hasEntriesCount(5));
 
 ####Test message content
 ```java
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasMessage;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasMessageThat;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveMessage;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveMessageThat;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasAtLeastOneEntryThat;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.assertThat;
 
 ....
 //Asserts that at least one entry with 'a message' message has been logged 
-assertThat(mockedLogger, hasAtLeastOneEntryThat(hasMessage("a message")));
+assertThat(mockedLogger, hasAtLeastOneEntryThat(haveMessage("a message")));
 
 //Asserts that at least one message that starts with 'Hello' has been logged
-assertThat(mockedLogger, hasAtLeastOneEntryThat(hasMessageThat(startsWith("Hello"))));
+assertThat(mockedLogger, hasAtLeastOneEntryThat(haveMessageThat(startsWith("Hello"))));
 ```
 
 ###Test message format parameters
 ```java
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasNoParam;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasParams;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.containsParams;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveNoParam;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveParams;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.containParams;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.that;
 import static org.junit.Assert.assertThat;
 
-assertThat(mockedLogger, hasEntriesCount(1, that(hasParams())));
-assertThat(mockedLogger, hasEntriesCount(1, that(hasNoParam())));
+assertThat(mockedLogger, hasEntriesCount(1, that(haveParams())));
+assertThat(mockedLogger, hasEntriesCount(1, that(haveNoParam())));
 
 //Asserts that there is exactly one log entry with format parameters array that includes p1 and p2
-assertThat(mockedLogger, hasEntriesCount(1, that(containsParams(p1, p2))));
+assertThat(mockedLogger, hasEntriesCount(1, that(containParams(p1, p2))));
 
 //Asserts that there is exactly one log entry with format parameters array equals to {p1,p2,p3}
-assertThat(mockedLogger, hasEntriesCount(1, that(hasParams(p1, p2, p3))));
+assertThat(mockedLogger, hasEntriesCount(1, that(haveParams(p1, p2, p3))));
 ```
 
 ####Test logging level
 ```java
-import static org.answerit.mock.slf4j.LoggingEventLevelMatcher.hasLevel;
+import static org.answerit.mock.slf4j.LoggingEventLevelMatcher.haveLevel;
 import static org.answerit.mock.slf4j.LoggingLevel.DEBUG;
 import static org.answerit.mock.slf4j.LoggingLevel.ERROR;
 import static org.answerit.mock.slf4j.LoggingLevel.INFO;
@@ -121,48 +121,48 @@ import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.that;
 import static org.junit.Assert.assertThat;
 
-assertThat(mockedLogger, hasEntriesCount(1, that(hasLevel(TRACE))));
-assertThat(mockedLogger, hasEntriesCount(1, that(hasLevel(DEBUG))));
-assertThat(mockedLogger, hasEntriesCount(1, that(hasLevel(INFO))));
-assertThat(mockedLogger, hasEntriesCount(1, that(hasLevel(WARN))));
-assertThat(mockedLogger, hasEntriesCount(1, that(hasLevel(ERROR))));
+assertThat(mockedLogger, hasEntriesCount(1, that(haveLevel(TRACE))));
+assertThat(mockedLogger, hasEntriesCount(1, that(haveLevel(DEBUG))));
+assertThat(mockedLogger, hasEntriesCount(1, that(haveLevel(INFO))));
+assertThat(mockedLogger, hasEntriesCount(1, that(haveLevel(WARN))));
+assertThat(mockedLogger, hasEntriesCount(1, that(haveLevel(ERROR))));
 ```
 
 ####Test mapped diagnostic context (MDC)
 ```java
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.containsMDC;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.containMDC;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasMDC;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveMDC;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.that;
 import static org.hamcrest.CoreMatchers.anyOf;
 import static org.junit.Assert.assertThat;
 
-assertThat(logger, hasEntriesCount(2, that(containsMDC("key1", "val1"))));
-assertThat(logger, hasEntriesCount(1, that(hasMDC("key1","val1","key2","val2","key3","val3"))));
+assertThat(logger, hasEntriesCount(2, that(containMDC("key1", "val1"))));
+assertThat(logger, hasEntriesCount(1, that(haveMDC("key1","val1","key2","val2","key3","val3"))));
 ```
 
 ####Test markers
 ```java
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.containsAtLeastOneMarker;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.containsMarker;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.containsNoMarker;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.containAtLeastOneMarker;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.containMarker;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.containNoMarker;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.that;
 import static org.junit.Assert.assertThat;
 
-assertThat(logger, hasEntriesCount(1, that(containsNoMarker())));
-assertThat(logger, hasEntriesCount(2, that(containsMarker("MARKER_NAME"))));
+assertThat(logger, hasEntriesCount(1, that(containNoMarker())));
+assertThat(logger, hasEntriesCount(2, that(containMarker("MARKER_NAME"))));
 ```
 
 ####More complex test
 ```java
 assertThat(mockedLogger, hasAtLeastOneEntryThat(allOf(
-	hasLevel(LoggingLevel.ERROR),
-	containsMDC("authenticationToken", nullValue()),
-	containsMarker("SECURITY_ALERT"),
-	hasMessageThat(allOf(
-		containsString("Invalid"),
-		containsString("username")
+	haveLevel(LoggingLevel.ERROR),
+	containMDC("authenticationToken", nullValue()),
+	containMarker("SECURITY_ALERT"),
+	haveMessageThat(allOf(
+		containString("Invalid"),
+		containString("username")
 		)))
 	));
 ```

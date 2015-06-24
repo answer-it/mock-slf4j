@@ -1,9 +1,9 @@
 package org.answerit.mock.slf4j;
 
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.containsMDC;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.containMDC;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasMDC;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasNoMDC;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveMDC;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveNoMDC;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.that;
 import static org.hamcrest.CoreMatchers.anyOf;
 import static org.junit.Assert.assertThat;
@@ -87,69 +87,69 @@ public class LoggingEventContextMatcherTest extends AbstractMockSlf4jLoggerTest{
 
 	@Test
 	public void test_containsMDC_Map() {
-		assertThat(logger, hasEntriesCount(6, that(containsMDC(EMPTY_MDC))));
-		assertThat(logger, hasEntriesCount(6, that(containsMDC(null))));
-		assertThat(logger, hasEntriesCount(1, that(containsMDC(MDC1))));
-		assertThat(logger, hasEntriesCount(2, that(containsMDC(MDC2))));
-		assertThat(logger, hasEntriesCount(1, that(containsMDC(MDC3))));
+		assertThat(logger, hasEntriesCount(6, that(containMDC(EMPTY_MDC))));
+		assertThat(logger, hasEntriesCount(6, that(containMDC(null))));
+		assertThat(logger, hasEntriesCount(1, that(containMDC(MDC1))));
+		assertThat(logger, hasEntriesCount(2, that(containMDC(MDC2))));
+		assertThat(logger, hasEntriesCount(1, that(containMDC(MDC3))));
 	}
 
 	@Test
 	public void test_containsMDC_One_Pair() {
-		assertThat(logger, hasEntriesCount(2, that(containsMDC(KEY_1, VALUE_1))));
-		assertThat(logger, hasEntriesCount(1, that(containsMDC(KEY_2, VALUE_2))));
-		assertThat(logger, hasEntriesCount(1, that(containsMDC(KEY_2, VALUE_1))));
-		assertThat(logger, hasEntriesCount(2, that(containsMDC(KEY_3, VALUE_3))));
-		assertThat(logger, hasEntriesCount(1, that(containsMDC(KEY_4, VALUE_4))));
-		assertThat(logger, hasEntriesCount(1, that(containsMDC(KEY_4, VALUE_3))));
-		assertThat(logger, hasEntriesCount(0, that(containsMDC(KEY_4, VALUE_2))));
+		assertThat(logger, hasEntriesCount(2, that(containMDC(KEY_1, VALUE_1))));
+		assertThat(logger, hasEntriesCount(1, that(containMDC(KEY_2, VALUE_2))));
+		assertThat(logger, hasEntriesCount(1, that(containMDC(KEY_2, VALUE_1))));
+		assertThat(logger, hasEntriesCount(2, that(containMDC(KEY_3, VALUE_3))));
+		assertThat(logger, hasEntriesCount(1, that(containMDC(KEY_4, VALUE_4))));
+		assertThat(logger, hasEntriesCount(1, that(containMDC(KEY_4, VALUE_3))));
+		assertThat(logger, hasEntriesCount(0, that(containMDC(KEY_4, VALUE_2))));
 	}
 
 	@Test
 	public void test_containsMDC_Two_Pairs() {
-		assertThat(logger, hasEntriesCount(2, that(containsMDC(KEY_1, VALUE_1, KEY_3, VALUE_3))));
-		assertThat(logger, hasEntriesCount(1, that(containsMDC(KEY_2, VALUE_2, KEY_4, VALUE_4))));
-		assertThat(logger, hasEntriesCount(1, that(containsMDC(KEY_2, VALUE_1, KEY_4, VALUE_3))));
+		assertThat(logger, hasEntriesCount(2, that(containMDC(KEY_1, VALUE_1, KEY_3, VALUE_3))));
+		assertThat(logger, hasEntriesCount(1, that(containMDC(KEY_2, VALUE_2, KEY_4, VALUE_4))));
+		assertThat(logger, hasEntriesCount(1, that(containMDC(KEY_2, VALUE_1, KEY_4, VALUE_3))));
 	}
 
 	@Test
 	public void test_containsMDC_Three_Pairs() {
-		assertThat(logger, hasEntriesCount(1, that(containsMDC(KEY_1, VALUE_1, KEY_2, VALUE_2, KEY_3, VALUE_3))));
+		assertThat(logger, hasEntriesCount(1, that(containMDC(KEY_1, VALUE_1, KEY_2, VALUE_2, KEY_3, VALUE_3))));
 	}
 
 	@Test
 	public void test_hasMDC_Map() {
-		assertThat(logger, hasEntriesCount(1, that(anyOf(hasMDC(EMPTY_MDC), hasMDC(null)))));
-		assertThat(logger, hasEntriesCount(1, that(hasMDC(MDC1))));
-		assertThat(logger, hasEntriesCount(1, that(hasMDC(MDC2))));
-		assertThat(logger, hasEntriesCount(1, that(hasMDC(MDC3))));
+		assertThat(logger, hasEntriesCount(1, that(anyOf(haveMDC(EMPTY_MDC), haveMDC(null)))));
+		assertThat(logger, hasEntriesCount(1, that(haveMDC(MDC1))));
+		assertThat(logger, hasEntriesCount(1, that(haveMDC(MDC2))));
+		assertThat(logger, hasEntriesCount(1, that(haveMDC(MDC3))));
 	}
 
 	@Test
 	public void test_hasMDC_One_Pair() {
-		assertThat(logger, hasEntriesCount(0, that(hasMDC(KEY_1, VALUE_1))));
-		assertThat(logger, hasEntriesCount(1, that(hasMDC(KEY_1, VALUE_2))));
+		assertThat(logger, hasEntriesCount(0, that(haveMDC(KEY_1, VALUE_1))));
+		assertThat(logger, hasEntriesCount(1, that(haveMDC(KEY_1, VALUE_2))));
 	}
 
 	@Test
 	public void test_hasMDC_Two_Pairs() {
-		assertThat(logger, hasEntriesCount(0, that(hasMDC(KEY_1, VALUE_1, KEY_2, VALUE_2))));
-		assertThat(logger, hasEntriesCount(1, that(hasMDC(KEY_1, VALUE_1, KEY_3, VALUE_3))));
+		assertThat(logger, hasEntriesCount(0, that(haveMDC(KEY_1, VALUE_1, KEY_2, VALUE_2))));
+		assertThat(logger, hasEntriesCount(1, that(haveMDC(KEY_1, VALUE_1, KEY_3, VALUE_3))));
 	}
 
 	@Test
 	public void test_hasMDC_Three_Pairs() {
-		assertThat(logger, hasEntriesCount(0, that(hasMDC(KEY_1, VALUE_1, KEY_2, VALUE_2, KEY_3, VALUE_3))));
-		assertThat(logger, hasEntriesCount(1, that(hasMDC(KEY_1, VALUE_3, KEY_2, VALUE_4, KEY_3, VALUE_1))));
+		assertThat(logger, hasEntriesCount(0, that(haveMDC(KEY_1, VALUE_1, KEY_2, VALUE_2, KEY_3, VALUE_3))));
+		assertThat(logger, hasEntriesCount(1, that(haveMDC(KEY_1, VALUE_3, KEY_2, VALUE_4, KEY_3, VALUE_1))));
 	}
 
 	@Test
 	public void test_hasMDC() {
-		assertThat(logger, hasEntriesCount(5, that(hasMDC())));
+		assertThat(logger, hasEntriesCount(5, that(haveMDC())));
 	}
 
 	@Test
 	public void test_hasNoMDC() {
-		assertThat(logger, hasEntriesCount(1, that(hasNoMDC())));
+		assertThat(logger, hasEntriesCount(1, that(haveNoMDC())));
 	}
 }

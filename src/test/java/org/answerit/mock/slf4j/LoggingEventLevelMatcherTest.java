@@ -1,6 +1,6 @@
 package org.answerit.mock.slf4j;
 
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasLevel;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveLevel;
 import static org.answerit.mock.slf4j.LoggingLevel.DEBUG;
 import static org.answerit.mock.slf4j.LoggingLevel.ERROR;
 import static org.answerit.mock.slf4j.LoggingLevel.INFO;
@@ -33,11 +33,11 @@ public class LoggingEventLevelMatcherTest {
 		logger.error("Error");
 
 		assertThat(logger, hasEntriesCount(5));
-		assertThat(logger, hasEntriesCount(1, that(hasLevel(TRACE))));
-		assertThat(logger, hasEntriesCount(1, that(hasLevel(DEBUG))));
-		assertThat(logger, hasEntriesCount(1, that(hasLevel(INFO))));
-		assertThat(logger, hasEntriesCount(1, that(hasLevel(WARN))));
-		assertThat(logger, hasEntriesCount(1, that(hasLevel(ERROR))));
+		assertThat(logger, hasEntriesCount(1, that(haveLevel(TRACE))));
+		assertThat(logger, hasEntriesCount(1, that(haveLevel(DEBUG))));
+		assertThat(logger, hasEntriesCount(1, that(haveLevel(INFO))));
+		assertThat(logger, hasEntriesCount(1, that(haveLevel(WARN))));
+		assertThat(logger, hasEntriesCount(1, that(haveLevel(ERROR))));
 	}
 
 }

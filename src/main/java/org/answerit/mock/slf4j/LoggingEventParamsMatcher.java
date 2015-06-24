@@ -77,27 +77,27 @@ public class LoggingEventParamsMatcher<T> extends BaseMatcher<T> {
 		return matchAlgorithm.matches(loggingEvent.getCopyOfParams(), this.params);
 	}
 
-	public static <T> Matcher<T> containsParams(Iterable<?> params) {
+	public static <T> Matcher<T> containParams(Iterable<?> params) {
 		return new LoggingEventParamsMatcher<T>(MatchAlgorithm.INCLUSION, params);
 	}
 
-	public static <T> Matcher<T> containsParams(Object ... params) {
+	public static <T> Matcher<T> containParams(Object ... params) {
 		return new LoggingEventParamsMatcher<T>(MatchAlgorithm.INCLUSION, params);
 	}
 
-	public static <T> Matcher<T> hasParams(Iterable<?> params) {
+	public static <T> Matcher<T> haveParams(Iterable<?> params) {
 		return new LoggingEventParamsMatcher<T>(MatchAlgorithm.IDENTITY, params);
 	}
 
-	public static <T> Matcher<T> hasParams(Object ... params) {
+	public static <T> Matcher<T> haveParams(Object ... params) {
 		return new LoggingEventParamsMatcher<T>(MatchAlgorithm.IDENTITY, params);
 	}
 
-	public static <T> Matcher<T> hasParams() {
-		return CoreMatchers.not(LoggingEventParamsMatcher.<T>hasNoParam());
+	public static <T> Matcher<T> haveParams() {
+		return CoreMatchers.not(LoggingEventParamsMatcher.<T>haveNoParam());
 	}
 
-	public static <T> Matcher<T> hasNoParam() {
+	public static <T> Matcher<T> haveNoParam() {
 		return CoreMatchers.anyOf(
 				new LoggingEventParamsMatcher<T>(MatchAlgorithm.IDENTITY, (Object[])null),
 				new LoggingEventParamsMatcher<T>(MatchAlgorithm.IDENTITY, new ArrayList<Object>())

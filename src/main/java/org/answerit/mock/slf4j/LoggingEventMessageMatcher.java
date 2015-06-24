@@ -37,11 +37,11 @@ public class LoggingEventMessageMatcher<T> extends BaseMatcher<T> {
 		return Objects.equals(logMessage, message);
 	}
 
-	public static <T> Matcher<T> hasMessage(String message) {
+	public static <T> Matcher<T> haveMessage(String message) {
 		return new LoggingEventMessageMatcher<T>(message, null);
 	}
 	
-	public static <T> Matcher<T> hasMessageThat(Matcher<T> matcher) {
+	public static <T> Matcher<T> haveMessageThat(Matcher<T> matcher) {
 		return new LoggingEventMessageMatcher<T>(null, matcher);
 	}
 }

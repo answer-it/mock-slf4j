@@ -73,24 +73,24 @@ public class LoggingEventContextMatcher<T> extends BaseMatcher<T> {
 		return matchAlgorithm.matches(loggingEvent.getCopyOfMdc(), this.mdc);
 	}
 
-	public static <T> Matcher<T> containsMDC(Map<String, String> mdc) {
+	public static <T> Matcher<T> containMDC(Map<String, String> mdc) {
 		return new LoggingEventContextMatcher<T>(MatchAlgorithm.INCLUSION, mdc);
 	}
 
-	public static <T> Matcher<T> containsMDC(String key, String value) {
+	public static <T> Matcher<T> containMDC(String key, String value) {
 		final Map<String, String> mdc = new HashMap<String, String>(1);
 		mdc.put(key, value);
 		return new LoggingEventContextMatcher<T>(MatchAlgorithm.INCLUSION, mdc);
 	}
 
-	public static <T> Matcher<T> containsMDC(String key1, String value1, String key2, String value2) {
+	public static <T> Matcher<T> containMDC(String key1, String value1, String key2, String value2) {
 		final Map<String, String> mdc = new HashMap<String, String>(1);
 		mdc.put(key1, value1);
 		mdc.put(key2, value2);
 		return new LoggingEventContextMatcher<T>(MatchAlgorithm.INCLUSION, mdc);
 	}
 
-	public static <T> Matcher<T> containsMDC(String key1, String value1, String key2, String value2, String key3, String value3) {
+	public static <T> Matcher<T> containMDC(String key1, String value1, String key2, String value2, String key3, String value3) {
 		final Map<String, String> mdc = new HashMap<String, String>(1);
 		mdc.put(key1, value1);
 		mdc.put(key2, value2);
@@ -98,24 +98,24 @@ public class LoggingEventContextMatcher<T> extends BaseMatcher<T> {
 		return new LoggingEventContextMatcher<T>(MatchAlgorithm.INCLUSION, mdc);
 	}
 
-	public static <T> Matcher<T> hasMDC(Map<String, String> mdc) {
+	public static <T> Matcher<T> haveMDC(Map<String, String> mdc) {
 		return new LoggingEventContextMatcher<T>(MatchAlgorithm.IDENTITY, mdc);
 	}
 
-	public static <T> Matcher<T> hasMDC(String key, String value) {
+	public static <T> Matcher<T> haveMDC(String key, String value) {
 		final Map<String, String> mdc = new HashMap<String, String>(1);
 		mdc.put(key, value);
 		return new LoggingEventContextMatcher<T>(MatchAlgorithm.IDENTITY, mdc);
 	}
 
-	public static <T> Matcher<T> hasMDC(String key1, String value1, String key2, String value2) {
+	public static <T> Matcher<T> haveMDC(String key1, String value1, String key2, String value2) {
 		final Map<String, String> mdc = new HashMap<String, String>(1);
 		mdc.put(key1, value1);
 		mdc.put(key2, value2);
 		return new LoggingEventContextMatcher<T>(MatchAlgorithm.IDENTITY, mdc);
 	}
 
-	public static <T> Matcher<T> hasMDC(String key1, String value1, String key2, String value2, String key3, String value3) {
+	public static <T> Matcher<T> haveMDC(String key1, String value1, String key2, String value2, String key3, String value3) {
 		final Map<String, String> mdc = new HashMap<String, String>(1);
 		mdc.put(key1, value1);
 		mdc.put(key2, value2);
@@ -123,11 +123,11 @@ public class LoggingEventContextMatcher<T> extends BaseMatcher<T> {
 		return new LoggingEventContextMatcher<T>(MatchAlgorithm.IDENTITY, mdc);
 	}
 
-	public static <T> Matcher<T> hasMDC() {
-		return CoreMatchers.not(LoggingEventContextMatcher.<T>hasNoMDC());
+	public static <T> Matcher<T> haveMDC() {
+		return CoreMatchers.not(LoggingEventContextMatcher.<T>haveNoMDC());
 	}
 
-	public static <T> Matcher<T> hasNoMDC() {
+	public static <T> Matcher<T> haveNoMDC() {
 		return CoreMatchers.anyOf(
 				new LoggingEventContextMatcher<T>(MatchAlgorithm.IDENTITY, null),
 				new LoggingEventContextMatcher<T>(MatchAlgorithm.IDENTITY, new HashMap<String, String>())

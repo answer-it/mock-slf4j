@@ -2,8 +2,8 @@ package org.answerit.mock.slf4j;
 
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasAtLeastOneEntryThat;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasMessage;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasMessageThat;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveMessage;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveMessageThat;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.assertThat;
@@ -27,7 +27,7 @@ public class LoggingEventMessageMatcherTest {
 	public void test_hasMessage() {
 		logger.debug(MESSAGE);
 
-		assertThat(logger, hasAtLeastOneEntryThat(hasMessage(MESSAGE)));
+		assertThat(logger, hasAtLeastOneEntryThat(haveMessage(MESSAGE)));
 	}
 
 	@Test
@@ -35,8 +35,8 @@ public class LoggingEventMessageMatcherTest {
 		logger.debug(MESSAGE);
 		
 		assertThat(logger, hasEntriesCount(1));
-		assertThat(logger, hasAtLeastOneEntryThat(hasMessageThat(startsWith("May"))));
-		assertThat(logger, not(hasAtLeastOneEntryThat(hasMessageThat(startsWith("may")))));
+		assertThat(logger, hasAtLeastOneEntryThat(haveMessageThat(startsWith("May"))));
+		assertThat(logger, not(hasAtLeastOneEntryThat(haveMessageThat(startsWith("may")))));
 	}
 
 }

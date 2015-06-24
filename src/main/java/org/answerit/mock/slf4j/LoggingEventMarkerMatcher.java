@@ -41,15 +41,15 @@ public class LoggingEventMarkerMatcher<T> extends BaseMatcher<T> {
 		return name != null ? logMarker.contains(name) : false;
 	}
 
-	public static <T> Matcher<T> containsMarker(String name) {
+	public static <T> Matcher<T> containMarker(String name) {
 		return new LoggingEventMarkerMatcher<T>(name);
 	}
 	
-	public static <T> Matcher<T> containsNoMarker() {
+	public static <T> Matcher<T> containNoMarker() {
 		return new LoggingEventMarkerMatcher<T>(null);
 	}
 	
-	public static <T> Matcher<T> containsAtLeastOneMarker() {
+	public static <T> Matcher<T> containAtLeastOneMarker() {
 		return CoreMatchers.not(new LoggingEventMarkerMatcher<T>(null));
 	}
 }

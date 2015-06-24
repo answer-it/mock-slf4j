@@ -59,110 +59,110 @@ public final class MockSlf4jMatchers {
 	//---------------------------------------------------------
 	// org.answerit.mock.slf4j.LoggingEventContextMatcher2
 	//---------------------------------------------------------
-	public static <T> org.hamcrest.Matcher<T> containsMDC(String key, Matcher<T> valueMatcher) {
-		return org.answerit.mock.slf4j.LoggingEventContextMatcher2.<T>containsMDC(key, valueMatcher);
+	public static <T> org.hamcrest.Matcher<T> containMDC(String key, Matcher<T> valueMatcher) {
+		return org.answerit.mock.slf4j.LoggingEventContextMatcher2.<T>containMDC(key, valueMatcher);
 	}
 
 	//---------------------------------------------------------
 	// org.answerit.mock.slf4j.LoggingEventContextMatcher
 	//---------------------------------------------------------
-	public static <T> org.hamcrest.Matcher<T> containsMDC(Map<String, String> mdc) {
-		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>containsMDC(mdc);
+	public static <T> org.hamcrest.Matcher<T> containMDC(Map<String, String> mdc) {
+		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>containMDC(mdc);
 	}
 
-	public static <T> org.hamcrest.Matcher<T> containsMDC(String key, String value) {
-		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>containsMDC(key, value);
+	public static <T> org.hamcrest.Matcher<T> containMDC(String key, String value) {
+		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>containMDC(key, value);
 	}
 
-	public static <T> org.hamcrest.Matcher<T> containsMDC(String key1, String value1, String key2, String value2) {
-		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>containsMDC(key1, value1, key2, value2);
+	public static <T> org.hamcrest.Matcher<T> containMDC(String key1, String value1, String key2, String value2) {
+		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>containMDC(key1, value1, key2, value2);
 	}
 
-	public static <T> org.hamcrest.Matcher<T> containsMDC(String key1, String value1, String key2, String value2, String key3, String value3) {
-		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>containsMDC(key1, value1, key2, value2, key3, value3);
+	public static <T> org.hamcrest.Matcher<T> containMDC(String key1, String value1, String key2, String value2, String key3, String value3) {
+		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>containMDC(key1, value1, key2, value2, key3, value3);
 	}
 
-	public static <T> org.hamcrest.Matcher<T> hasMDC(Map<String, String> mdc) {
-		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>hasMDC(mdc);
+	public static <T> org.hamcrest.Matcher<T> haveMDC(Map<String, String> mdc) {
+		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>haveMDC(mdc);
 	}
 
-	public static <T> org.hamcrest.Matcher<T> hasMDC(String key, String value) {
-		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>hasMDC(key, value);
+	public static <T> org.hamcrest.Matcher<T> haveMDC(String key, String value) {
+		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>haveMDC(key, value);
 	}
 
-	public static <T> org.hamcrest.Matcher<T> hasMDC(String key1, String value1, String key2, String value2) {
-		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>hasMDC(key1, value1, key2, value2);
+	public static <T> org.hamcrest.Matcher<T> haveMDC(String key1, String value1, String key2, String value2) {
+		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>haveMDC(key1, value1, key2, value2);
 	}
 
-	public static <T> org.hamcrest.Matcher<T> hasMDC(String key1, String value1, String key2, String value2, String key3, String value3) {
-		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>hasMDC(key1, value1, key2, value2, key3, value3);
+	public static <T> org.hamcrest.Matcher<T> haveMDC(String key1, String value1, String key2, String value2, String key3, String value3) {
+		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>haveMDC(key1, value1, key2, value2, key3, value3);
 	}
 
-	public static <T> org.hamcrest.Matcher<T> hasMDC() {
-		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>hasMDC();
+	public static <T> org.hamcrest.Matcher<T> haveMDC() {
+		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>haveMDC();
 	}
 
-	public static <T> org.hamcrest.Matcher<T> hasNoMDC() {
-		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>hasNoMDC();
+	public static <T> org.hamcrest.Matcher<T> haveNoMDC() {
+		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>haveNoMDC();
 	}
 
 	//---------------------------------------------------------
 	// org.answerit.mock.slf4j.LoggingEventParamsMatcher
 	//---------------------------------------------------------
-	public static <T> org.hamcrest.Matcher<T> containsParams(Iterable<?> params) {
-		return org.answerit.mock.slf4j.LoggingEventParamsMatcher.<T>containsParams(params);
+	public static <T> org.hamcrest.Matcher<T> containParams(Iterable<?> params) {
+		return org.answerit.mock.slf4j.LoggingEventParamsMatcher.<T>containParams(params);
 	}
 
-	public static <T> org.hamcrest.Matcher<T> containsParams(Object ... params) {
-		return org.answerit.mock.slf4j.LoggingEventParamsMatcher.<T>containsParams(params);
+	public static <T> org.hamcrest.Matcher<T> containParams(Object ... params) {
+		return org.answerit.mock.slf4j.LoggingEventParamsMatcher.<T>containParams(params);
 	}
 
-	public static <T> org.hamcrest.Matcher<T> hasParams(Iterable<?> params) {
-		return org.answerit.mock.slf4j.LoggingEventParamsMatcher.<T>hasParams(params);
+	public static <T> org.hamcrest.Matcher<T> haveParams(Iterable<?> params) {
+		return org.answerit.mock.slf4j.LoggingEventParamsMatcher.<T>haveParams(params);
 	}
 
-	public static <T> org.hamcrest.Matcher<T> hasParams(Object ... params) {
-		return org.answerit.mock.slf4j.LoggingEventParamsMatcher.<T>hasParams(params);
+	public static <T> org.hamcrest.Matcher<T> haveParams(Object ... params) {
+		return org.answerit.mock.slf4j.LoggingEventParamsMatcher.<T>haveParams(params);
 	}
 
-	public static <T> org.hamcrest.Matcher<T> hasParams() {
-		return org.answerit.mock.slf4j.LoggingEventParamsMatcher.<T>hasParams();
+	public static <T> org.hamcrest.Matcher<T> haveParams() {
+		return org.answerit.mock.slf4j.LoggingEventParamsMatcher.<T>haveParams();
 	}
 
-	public static <T> org.hamcrest.Matcher<T> hasNoParam() {
-		return org.answerit.mock.slf4j.LoggingEventParamsMatcher.<T>hasNoParam();
+	public static <T> org.hamcrest.Matcher<T> haveNoParam() {
+		return org.answerit.mock.slf4j.LoggingEventParamsMatcher.<T>haveNoParam();
 	}
 
 	//---------------------------------------------------------
 	// org.answerit.mock.slf4j.LoggingEventLevelMatcher
 	//---------------------------------------------------------
-	public static <T> org.hamcrest.Matcher<T> hasLevel(LoggingLevel level)  {
-		return org.answerit.mock.slf4j.LoggingEventLevelMatcher.<T>hasLevel(level) ;
+	public static <T> org.hamcrest.Matcher<T> haveLevel(LoggingLevel level)  {
+		return org.answerit.mock.slf4j.LoggingEventLevelMatcher.<T>haveLevel(level) ;
 	}
 
 	//---------------------------------------------------------
 	// org.answerit.mock.slf4j.LoggingEventMarkerMatcher
 	//---------------------------------------------------------
-	public static <T> org.hamcrest.Matcher<T> containsMarker(String name)  {
-		return org.answerit.mock.slf4j.LoggingEventMarkerMatcher.<T>containsMarker(name) ;
+	public static <T> org.hamcrest.Matcher<T> containMarker(String name)  {
+		return org.answerit.mock.slf4j.LoggingEventMarkerMatcher.<T>containMarker(name) ;
 	}
 
-	public static <T> org.hamcrest.Matcher<T> containsNoMarker()  {
-		return org.answerit.mock.slf4j.LoggingEventMarkerMatcher.<T>containsNoMarker() ;
+	public static <T> org.hamcrest.Matcher<T> containNoMarker()  {
+		return org.answerit.mock.slf4j.LoggingEventMarkerMatcher.<T>containNoMarker() ;
 	}
 
-	public static <T> org.hamcrest.Matcher<T> containsAtLeastOneMarker()  {
-		return org.answerit.mock.slf4j.LoggingEventMarkerMatcher.<T>containsAtLeastOneMarker() ;
+	public static <T> org.hamcrest.Matcher<T> containAtLeastOneMarker()  {
+		return org.answerit.mock.slf4j.LoggingEventMarkerMatcher.<T>containAtLeastOneMarker() ;
 	}
 
 	//---------------------------------------------------------
 	// org.answerit.mock.slf4j.LoggingEventMessageMatcher
 	//---------------------------------------------------------
-	public static <T> org.hamcrest.Matcher<T> hasMessage(String message)  {
-		return org.answerit.mock.slf4j.LoggingEventMessageMatcher.<T>hasMessage(message) ;
+	public static <T> org.hamcrest.Matcher<T> haveMessage(String message)  {
+		return org.answerit.mock.slf4j.LoggingEventMessageMatcher.<T>haveMessage(message) ;
 	}
 
-	public static <T> org.hamcrest.Matcher<T> hasMessageThat(Matcher<T> matcher)  {
-		return org.answerit.mock.slf4j.LoggingEventMessageMatcher.<T>hasMessageThat(matcher) ;
+	public static <T> org.hamcrest.Matcher<T> haveMessageThat(Matcher<T> matcher)  {
+		return org.answerit.mock.slf4j.LoggingEventMessageMatcher.<T>haveMessageThat(matcher) ;
 	}
 }

@@ -1,8 +1,8 @@
 package org.answerit.mock.slf4j;
 
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.containsAtLeastOneMarker;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.containsMarker;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.containsNoMarker;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.containAtLeastOneMarker;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.containMarker;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.containNoMarker;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.that;
 import static org.junit.Assert.assertThat;
@@ -38,9 +38,9 @@ public class LoggingEventMarkerMatcherTest extends AbstractMockSlf4jLoggerTest {
 		logger.debug(parentMarker, "Parent marker");
 		logger.debug(childMarker, "Child marker");
 
-		assertThat(logger, hasEntriesCount(0, that(containsMarker(orphanMarker.getName()))));
-		assertThat(logger, hasEntriesCount(1, that(containsMarker(parentMarker.getName()))));
-		assertThat(logger, hasEntriesCount(2, that(containsMarker(childMarker.getName()))));		
+		assertThat(logger, hasEntriesCount(0, that(containMarker(orphanMarker.getName()))));
+		assertThat(logger, hasEntriesCount(1, that(containMarker(parentMarker.getName()))));
+		assertThat(logger, hasEntriesCount(2, that(containMarker(childMarker.getName()))));		
 	}
 
 	@Test
@@ -49,7 +49,7 @@ public class LoggingEventMarkerMatcherTest extends AbstractMockSlf4jLoggerTest {
 		logger.debug(parentMarker, "Parent marker");
 		logger.debug(childMarker, "Child marker");
 
-		assertThat(logger, hasEntriesCount(1, that(containsNoMarker())));
+		assertThat(logger, hasEntriesCount(1, that(containNoMarker())));
 	}
 
 	@Test
@@ -58,7 +58,7 @@ public class LoggingEventMarkerMatcherTest extends AbstractMockSlf4jLoggerTest {
 		logger.debug(parentMarker, "Parent marker");
 		logger.debug(childMarker, "Child marker");
 
-		assertThat(logger, hasEntriesCount(2, that(containsAtLeastOneMarker())));
+		assertThat(logger, hasEntriesCount(2, that(containAtLeastOneMarker())));
 	}
 
 }

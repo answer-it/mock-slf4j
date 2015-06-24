@@ -1,9 +1,9 @@
 package org.answerit.mock.slf4j;
 
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.containsParams;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.containParams;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasNoParam;
-import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasParams;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveNoParam;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveParams;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.that;
 import static org.junit.Assert.assertThat;
 
@@ -29,9 +29,9 @@ public class LoggingEventParamsMatcherTest extends AbstractMockSlf4jLoggerTest{
 		logger.debug("Log with 2 params: {} {}", PARAM1, PARAM2);
 
 		assertThat(logger, hasEntriesCount(2));
-		assertThat(logger, hasEntriesCount(1, that(containsParams(Arrays.asList(new Object[]{PARAM1})))));
-		assertThat(logger, hasEntriesCount(1, that(containsParams(Arrays.asList(new Object[]{PARAM2})))));
-		assertThat(logger, hasEntriesCount(1, that(containsParams(Arrays.asList(new Object[]{PARAM1, PARAM2})))));
+		assertThat(logger, hasEntriesCount(1, that(containParams(Arrays.asList(new Object[]{PARAM1})))));
+		assertThat(logger, hasEntriesCount(1, that(containParams(Arrays.asList(new Object[]{PARAM2})))));
+		assertThat(logger, hasEntriesCount(1, that(containParams(Arrays.asList(new Object[]{PARAM1, PARAM2})))));
 	}
 
 	@Test
@@ -40,9 +40,9 @@ public class LoggingEventParamsMatcherTest extends AbstractMockSlf4jLoggerTest{
 		logger.debug("Log with 2 params: {} {}", PARAM1, PARAM2);
 
 		assertThat(logger, hasEntriesCount(2));
-		assertThat(logger, hasEntriesCount(1, that(containsParams(PARAM1))));
-		assertThat(logger, hasEntriesCount(1, that(containsParams(PARAM2))));
-		assertThat(logger, hasEntriesCount(1, that(containsParams(PARAM1, PARAM2))));
+		assertThat(logger, hasEntriesCount(1, that(containParams(PARAM1))));
+		assertThat(logger, hasEntriesCount(1, that(containParams(PARAM2))));
+		assertThat(logger, hasEntriesCount(1, that(containParams(PARAM1, PARAM2))));
 	}
 
 	@Test
@@ -51,9 +51,9 @@ public class LoggingEventParamsMatcherTest extends AbstractMockSlf4jLoggerTest{
 		logger.debug("Log with 2 params: {} {}", PARAM1, PARAM2);
 
 		assertThat(logger, hasEntriesCount(2));
-		assertThat(logger, hasEntriesCount(0, that(hasParams(Arrays.asList(new Object[]{PARAM1})))));
-		assertThat(logger, hasEntriesCount(0, that(hasParams(Arrays.asList(new Object[]{PARAM2})))));
-		assertThat(logger, hasEntriesCount(1, that(hasParams(Arrays.asList(new Object[]{PARAM1, PARAM2})))));
+		assertThat(logger, hasEntriesCount(0, that(haveParams(Arrays.asList(new Object[]{PARAM1})))));
+		assertThat(logger, hasEntriesCount(0, that(haveParams(Arrays.asList(new Object[]{PARAM2})))));
+		assertThat(logger, hasEntriesCount(1, that(haveParams(Arrays.asList(new Object[]{PARAM1, PARAM2})))));
 	}
 
 	@Test
@@ -62,9 +62,9 @@ public class LoggingEventParamsMatcherTest extends AbstractMockSlf4jLoggerTest{
 		logger.debug("Log with 2 params: {} {}", PARAM1, PARAM2);
 
 		assertThat(logger, hasEntriesCount(2));
-		assertThat(logger, hasEntriesCount(0, that(hasParams(PARAM1))));
-		assertThat(logger, hasEntriesCount(0, that(hasParams(PARAM2))));
-		assertThat(logger, hasEntriesCount(1, that(hasParams(PARAM1, PARAM2))));
+		assertThat(logger, hasEntriesCount(0, that(haveParams(PARAM1))));
+		assertThat(logger, hasEntriesCount(0, that(haveParams(PARAM2))));
+		assertThat(logger, hasEntriesCount(1, that(haveParams(PARAM1, PARAM2))));
 	}
 
 	@Test
@@ -73,7 +73,7 @@ public class LoggingEventParamsMatcherTest extends AbstractMockSlf4jLoggerTest{
 		logger.debug("Log with 2 params: {} {}", PARAM1, PARAM2);
 
 		assertThat(logger, hasEntriesCount(2));
-		assertThat(logger, hasEntriesCount(1, that(hasParams())));
+		assertThat(logger, hasEntriesCount(1, that(haveParams())));
 	}
 
 	@After
@@ -87,7 +87,7 @@ public class LoggingEventParamsMatcherTest extends AbstractMockSlf4jLoggerTest{
 		logger.debug("Log with 2 params: {} {}", PARAM1, PARAM2);
 
 		assertThat(logger, hasEntriesCount(2));
-		assertThat(logger, hasEntriesCount(1, that(hasNoParam())));
+		assertThat(logger, hasEntriesCount(1, that(haveNoParam())));
 	}
 
 }

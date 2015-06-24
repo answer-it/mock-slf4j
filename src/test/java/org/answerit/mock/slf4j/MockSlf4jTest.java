@@ -5,8 +5,6 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.sameInstance;
 import static org.junit.Assert.assertThat;
 
-import org.answerit.mock.slf4j.MockSlf4j;
-import org.answerit.mock.slf4j.MockSlf4jLogger;
 import org.junit.Test;
 import org.slf4j.Logger;
 

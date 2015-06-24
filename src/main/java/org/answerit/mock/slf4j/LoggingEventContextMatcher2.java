@@ -42,7 +42,7 @@ public class LoggingEventContextMatcher2<T> extends BaseMatcher<T> {
 		return valueMatcher.matches(logMdcValue);
 	}
 
-	public static <T> Matcher<T> containsMDC(String key, Matcher<T> valueMatcher) {
+	public static <T> Matcher<T> containMDC(String key, Matcher<T> valueMatcher) {
 		return new LoggingEventContextMatcher2<T>(key, valueMatcher);
 	}
 }

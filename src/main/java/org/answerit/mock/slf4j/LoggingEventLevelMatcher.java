@@ -31,7 +31,7 @@ public class LoggingEventLevelMatcher<T> extends BaseMatcher<T> {
 		return Objects.equals(loggingEvent.getLevel(), this.level);
 	}
 
-	public static <T> Matcher<T> hasLevel(LoggingLevel level) {
+	public static <T> Matcher<T> haveLevel(LoggingLevel level) {
 		return new LoggingEventLevelMatcher<T>(level);
 	}
 }
