@@ -10,6 +10,9 @@ public final class MockSlf4jMatchers {
 		// hide me
 	}
 
+	//---------------------------------------------------------
+	// Sugar
+	//---------------------------------------------------------
 	public static <T> org.hamcrest.Matcher<T> that(org.hamcrest.Matcher<T> matcher) {
 		return org.hamcrest.core.Is.<T>is(matcher);
 	}
@@ -18,6 +21,9 @@ public final class MockSlf4jMatchers {
 		return org.hamcrest.core.Is.<T>is(matcher);
 	}
 
+	//---------------------------------------------------------
+	// org.answerit.mock.slf4j.MockSlf4jLoggerMatcher
+	//---------------------------------------------------------
 	public static <T> org.hamcrest.Matcher<T> hasEntriesCount(int count) {
 		return org.answerit.mock.slf4j.MockSlf4jLoggerMatcher.<T>hasEntriesCount(count);
 	}
@@ -50,16 +56,22 @@ public final class MockSlf4jMatchers {
 		return org.answerit.mock.slf4j.MockSlf4jLoggerMatcher.<T>hasAtLeastOneEntryThat(matcher);
 	}
 
+	//---------------------------------------------------------
+	// org.answerit.mock.slf4j.LoggingEventContextMatcher2
+	//---------------------------------------------------------
+	public static <T> org.hamcrest.Matcher<T> containsMDC(String key, Matcher<T> valueMatcher) {
+		return org.answerit.mock.slf4j.LoggingEventContextMatcher2.<T>containsMDC(key, valueMatcher);
+	}
+
+	//---------------------------------------------------------
+	// org.answerit.mock.slf4j.LoggingEventContextMatcher
+	//---------------------------------------------------------
 	public static <T> org.hamcrest.Matcher<T> containsMDC(Map<String, String> mdc) {
 		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>containsMDC(mdc);
 	}
 
 	public static <T> org.hamcrest.Matcher<T> containsMDC(String key, String value) {
 		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>containsMDC(key, value);
-	}
-
-	public static <T> org.hamcrest.Matcher<T> containsMDC(String key, Matcher<T> valueMatcher) {
-		return org.answerit.mock.slf4j.LoggingEventContextMatcher2.<T>containsMDC(key, valueMatcher);
 	}
 
 	public static <T> org.hamcrest.Matcher<T> containsMDC(String key1, String value1, String key2, String value2) {
@@ -94,6 +106,9 @@ public final class MockSlf4jMatchers {
 		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>hasNoMDC();
 	}
 
+	//---------------------------------------------------------
+	// org.answerit.mock.slf4j.LoggingEventParamsMatcher
+	//---------------------------------------------------------
 	public static <T> org.hamcrest.Matcher<T> containsParams(Iterable<?> params) {
 		return org.answerit.mock.slf4j.LoggingEventParamsMatcher.<T>containsParams(params);
 	}
@@ -118,10 +133,16 @@ public final class MockSlf4jMatchers {
 		return org.answerit.mock.slf4j.LoggingEventParamsMatcher.<T>hasNoParam();
 	}
 
+	//---------------------------------------------------------
+	// org.answerit.mock.slf4j.LoggingEventLevelMatcher
+	//---------------------------------------------------------
 	public static <T> org.hamcrest.Matcher<T> hasLevel(LoggingLevel level)  {
 		return org.answerit.mock.slf4j.LoggingEventLevelMatcher.<T>hasLevel(level) ;
 	}
 
+	//---------------------------------------------------------
+	// org.answerit.mock.slf4j.LoggingEventMarkerMatcher
+	//---------------------------------------------------------
 	public static <T> org.hamcrest.Matcher<T> containsMarker(String name)  {
 		return org.answerit.mock.slf4j.LoggingEventMarkerMatcher.<T>containsMarker(name) ;
 	}
@@ -134,6 +155,9 @@ public final class MockSlf4jMatchers {
 		return org.answerit.mock.slf4j.LoggingEventMarkerMatcher.<T>containsAtLeastOneMarker() ;
 	}
 
+	//---------------------------------------------------------
+	// org.answerit.mock.slf4j.LoggingEventMessageMatcher
+	//---------------------------------------------------------
 	public static <T> org.hamcrest.Matcher<T> hasMessage(String message)  {
 		return org.answerit.mock.slf4j.LoggingEventMessageMatcher.<T>hasMessage(message) ;
 	}
