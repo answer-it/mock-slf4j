@@ -6,6 +6,7 @@ import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveMDC;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveNoMDC;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.that;
 import static org.hamcrest.CoreMatchers.anyOf;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.assertThat;
 
 import java.util.Collections;
@@ -83,6 +84,11 @@ public class LoggingEventContextMatcherTest extends AbstractMockSlf4jLoggerTest{
 	@After
 	public void tearDown() {
 		MDC.setContextMap(Collections.<String, String>emptyMap());
+	}
+
+	@Test
+	public void test_containsMDC_Matcher() {
+		assertThat(logger, hasEntriesCount(4, that(containMDC(KEY_1, startsWith("Value")))));
 	}
 
 	@Test
