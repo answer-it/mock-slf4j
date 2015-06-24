@@ -58,6 +58,10 @@ public final class MockSlf4jMatchers {
 		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>containsMDC(key, value);
 	}
 
+	public static <T> org.hamcrest.Matcher<T> containsMDC(String key, Matcher<T> valueMatcher) {
+		return org.answerit.mock.slf4j.LoggingEventContextMatcher2.<T>containsMDC(key, valueMatcher);
+	}
+
 	public static <T> org.hamcrest.Matcher<T> containsMDC(String key1, String value1, String key2, String value2) {
 		return org.answerit.mock.slf4j.LoggingEventContextMatcher.<T>containsMDC(key1, value1, key2, value2);
 	}

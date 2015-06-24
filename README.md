@@ -62,7 +62,7 @@ public class MockSlf4jTest
 	}
 }
 ```
-###Querying logged data
+###Testing logged data
 
 ####Test log entries count
 
@@ -158,7 +158,7 @@ assertThat(logger, hasEntriesCount(2, that(containsMarker("MARKER_NAME"))));
 ```java
 assertThat(mockedLogger, hasAtLeastOneEntryThat(allOf(
 	hasLevel(LoggingLevel.ERROR),
-	containsMDC("username", "<unknown>"),
+	containsMDC("authenticationToken", nullValue()),
 	containsMarker("SECURITY_ALERT"),
 	hasMessageThat(allOf(
 		containsString("Invalid"),
