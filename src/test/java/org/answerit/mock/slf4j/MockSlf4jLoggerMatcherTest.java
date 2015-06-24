@@ -3,11 +3,11 @@ package org.answerit.mock.slf4j;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasLessEntriesThan;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasMoreEntriesThan;
+import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasNoEntries;
 import static org.hamcrest.CoreMatchers.anything;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
-import org.answerit.mock.slf4j.MockSlf4jLogger;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -31,12 +31,26 @@ public class MockSlf4jLoggerMatcherTest {
 	}
 
 	@Test
+	public void test_hasNoEntries() {
+		assertThat(logger, hasNoEntries());
+		logger.debug("message");
+		assertThat(logger, not(hasNoEntries()));
+	}
+
+	@Test
 	public void test_hasEntriesCount_WithMatcher() {
 		assertThat(logger, hasEntriesCount(0, anything()));
 		for (int i = 1; i <= 50; i++) {
 			logger.debug("Message #" + i);
 			assertThat(logger, hasEntriesCount(i, anything()));
 		}
+	}
+
+	@Test
+	public void test_hasNoEntries_WithMatcher() {
+		assertThat(logger, hasNoEntries(anything()));
+		logger.debug("message");
+		assertThat(logger, not(hasNoEntries(anything())));
 	}
 
 	@Test

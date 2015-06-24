@@ -56,6 +56,14 @@ public final class MockSlf4jMatchers {
 		return org.answerit.mock.slf4j.MockSlf4jLoggerMatcher.<T>hasAtLeastOneEntryThat(matcher);
 	}
 
+	public static <T> org.hamcrest.Matcher<T> hasNoEntries() {
+		return org.answerit.mock.slf4j.MockSlf4jLoggerMatcher.<T>hasNoEntries();
+	}
+
+	public static <T> org.hamcrest.Matcher<T> hasNoEntries(Matcher<?> matcher) {
+		return org.answerit.mock.slf4j.MockSlf4jLoggerMatcher.<T>hasNoEntries(matcher);
+	}
+
 	//---------------------------------------------------------
 	// org.answerit.mock.slf4j.LoggingEventContextMatcher2
 	//---------------------------------------------------------

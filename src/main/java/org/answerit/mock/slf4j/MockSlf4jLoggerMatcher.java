@@ -123,4 +123,12 @@ public class MockSlf4jLoggerMatcher<T> extends BaseMatcher<T> {
 	public static <T> Matcher<T> hasAtLeastOneEntryThat(Matcher<?> matcher) {
 		return new MockSlf4jLoggerMatcher<T>(Comparator.GTE, Integer.valueOf(1), matcher);
 	}
+
+	public static <T> Matcher<T> hasNoEntries() {
+		return new MockSlf4jLoggerMatcher<T>(Comparator.EQ, Integer.valueOf(0), anything());
+	}
+
+	public static <T> Matcher<T> hasNoEntries(Matcher<?> matcher) {
+		return new MockSlf4jLoggerMatcher<T>(Comparator.EQ, Integer.valueOf(0), matcher);
+	}
 }
