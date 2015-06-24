@@ -2,6 +2,7 @@ package org.answerit.mock.slf4j;
 
 import java.util.Map;
 
+import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
 
 public final class MockSlf4jMatchers {
@@ -164,5 +165,19 @@ public final class MockSlf4jMatchers {
 
 	public static <T> org.hamcrest.Matcher<T> haveMessageThat(Matcher<T> matcher)  {
 		return org.answerit.mock.slf4j.LoggingEventMessageMatcher.<T>haveMessageThat(matcher) ;
+	}
+
+	//---------------------------------------------------------
+	// org.answerit.mock.slf4j.LoggingEventCauseMatcher
+	//---------------------------------------------------------
+	public static <T> org.hamcrest.Matcher<T> haveCause(Matcher<T> matcher)  {
+		return org.answerit.mock.slf4j.LoggingEventCauseMatcher.<T>haveCause(matcher) ;
+	}
+
+	//---------------------------------------------------------
+	// org.answerit.mock.slf4j.LoggingEventCauseMsgMatcher
+	//---------------------------------------------------------
+	public static <T> org.hamcrest.Matcher<T> haveCauseMessage(Matcher<T> matcher)  {
+		return org.answerit.mock.slf4j.LoggingEventCauseMsgMatcher.<T>haveCauseMessage(matcher) ;
 	}
 }
