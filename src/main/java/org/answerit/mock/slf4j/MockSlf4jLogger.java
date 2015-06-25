@@ -286,4 +286,10 @@ public class MockSlf4jLogger implements Logger{
 		// TODO implement this
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("%s {entriesCount: %d}", 
+				getClass().getSimpleName(), getLoggingEvents().size());
+	}
 }

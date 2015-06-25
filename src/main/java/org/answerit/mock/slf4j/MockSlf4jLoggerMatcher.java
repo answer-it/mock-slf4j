@@ -25,29 +25,55 @@ public class MockSlf4jLoggerMatcher<T> extends BaseMatcher<T> {
 			public boolean compare(int left, int right) {
 				return left < right;
 			}
+
+			@Override
+			public void describeTo(Description description) {
+				description.appendText("less than");
+			}
 		}, LTE {
 			@Override
 			public boolean compare(int left, int right) {
 				return left <= right;
+			}
+
+			@Override
+			public void describeTo(Description description) {
+				description.appendText("less than or equal to");
 			}
 		}, EQ {
 			@Override
 			public boolean compare(int left, int right) {
 				return left == right;
 			}
+
+			@Override
+			public void describeTo(Description description) {
+				//nothing to do
+			}
 		}, GTE {
 			@Override
 			public boolean compare(int left, int right) {
 				return left >= right;
+			}
+
+			@Override
+			public void describeTo(Description description) {
+				description.appendText("greater than or equal to");
 			}
 		}, GT {
 			@Override
 			public boolean compare(int left, int right) {
 				return left > right;
 			}
+
+			@Override
+			public void describeTo(Description description) {
+				description.appendText("greater than");
+			}
 		};
 
 		public abstract boolean compare(int left, int right);
+		public abstract void describeTo(Description description);
 	}
 
 	private MockSlf4jLoggerMatcher(Comparator comparator, Integer count, Matcher<?> matcher) {
@@ -57,7 +83,9 @@ public class MockSlf4jLoggerMatcher<T> extends BaseMatcher<T> {
 	}
 
 	public void describeTo(Description description) {
-		// TODO Auto-generated method stub
+		description.appendText("number of entries to be ");
+		comparator.describeTo(description);
+		description.appendValue(count);
 	}
 
 	/**
