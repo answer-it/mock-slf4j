@@ -11,13 +11,6 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 
 
-/**
- * Hamcrest matcher to help performing tests on a {@link MockLog4jAppender} instance.
- *  *
- * @author danielb
- *
- * @param <T>
- */
 public class LoggingEventParamsMatcher<T> extends BaseMatcher<T> {
 
 	private final Collection<Object> params;

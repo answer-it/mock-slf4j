@@ -25,8 +25,9 @@ public final class MockSlf4j {
 	 * Mocks static {@link Logger} fields declared for the given class. 
 	 * 'final' and 'static' fields can be mocked, too.
 	 * 
-	 * <p><b>Example:</b></p>
-	 * <p>
+	 * <p></p>
+	 * <b>Example:</b>
+	 * <p></p>
 	 * <pre>
 	 * final class ClassWithStaticLogger 
 	 * {
@@ -36,8 +37,7 @@ public final class MockSlf4j {
 	 * ....
 	 * Logger mockedLogger = MockSlf4j.mockStatic(ClassWithStaticLogger.class, "LOGGER");
 	 * </pre>
-	 * </p>
-	 * 
+	 *  
 	 * @param klass
 	 * 		The class for which a static {@link Logger} fields has been declared. 
 	 * @param loggerName
@@ -52,8 +52,9 @@ public final class MockSlf4j {
 	/**
 	 * Mocks non static {@link Logger} fields for the given instance.
 	 * 
-	 * <p><b>Example:</b></p>
-	 * <p>
+	 * <p></p>
+	 * <b>Example:</b>
+	 * <p></p>
 	 * <pre>
 	 * final class ClassWithNonStaticLogger 
 	 * {
@@ -64,7 +65,7 @@ public final class MockSlf4j {
 	 * ClassWithNonStaticLogger instance = new ClassWithNonStaticLogger();
 	 * Logger mockedLogger = MockSlf4j.mock(instance, "logger");
 	 * </pre>
-	 * </p>
+	 * 
 	 * @param instance
 	 * 		The instance for which a non static {@link Logger} fields has been declared.
 	 * @param loggerName
