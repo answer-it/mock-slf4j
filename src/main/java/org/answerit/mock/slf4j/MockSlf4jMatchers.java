@@ -14,11 +14,11 @@ public final class MockSlf4jMatchers {
 	// Sugar
 	//---------------------------------------------------------
 	public static <T> org.hamcrest.Matcher<T> that(org.hamcrest.Matcher<T> matcher) {
-		return org.hamcrest.core.Is.<T>is(matcher);
+		return org.answerit.mock.slf4j.That.<T>that(matcher);
 	}
 
 	public static <T> org.hamcrest.Matcher<T> which(org.hamcrest.Matcher<T> matcher) {
-		return org.hamcrest.core.Is.<T>is(matcher);
+		return org.answerit.mock.slf4j.Which.<T>which(matcher);
 	}
 
 	//---------------------------------------------------------
