@@ -1,7 +1,5 @@
 package org.answerit.mock.slf4j;
 
-import static org.hamcrest.CoreMatchers.anything;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -16,6 +14,8 @@ public class MockSlf4jLoggerMatcher<T> extends BaseMatcher<T> {
 	private final Integer count;
 	private final Comparator comparator;
 	private final Matcher<?> matcher;
+
+	private final List<LoggingEvent> matchers = new ArrayList<LoggingEvent>();
 
 
 
@@ -89,6 +89,27 @@ public class MockSlf4jLoggerMatcher<T> extends BaseMatcher<T> {
 			matcher.describeTo(description);
 		}
 	}
+	
+	@Override
+	public void describeMismatch(Object item, Description description) {
+		if(!(item instanceof MockSlf4jLogger)) {
+			description.appendText("not an instance of ").appendValue(MockSlf4jLogger.class.getName());
+			return;
+		}
+		
+		final MockSlf4jLogger logger = (MockSlf4jLogger) item;
+		description
+			.appendText(" found ")
+			.appendValue(matchers.size());
+			
+		if(matcher != null) {
+			description
+			.appendText(" out of ")
+			.appendValue(logger.getLoggingEvents().size())
+			.appendText(" entries ")
+			.appendText("matching the given condition");
+		}
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -107,12 +128,11 @@ public class MockSlf4jLoggerMatcher<T> extends BaseMatcher<T> {
 			return false;
 		}
 
-		final List<LoggingEvent> matchers = new ArrayList<LoggingEvent>();
 		for(LoggingEvent loggingEvent : loggingEvents) {
 			if(loggingEvent == null)
 				continue;
 
-			if(matcher.matches(loggingEvent)) {
+			if(matcher == null || matcher.matches(loggingEvent)) {
 				matchers.add(loggingEvent);
 			}
 		}
@@ -123,7 +143,7 @@ public class MockSlf4jLoggerMatcher<T> extends BaseMatcher<T> {
 	}
 
 	public static <T> Matcher<T> hasEntriesCount(int count) {
-		return new MockSlf4jLoggerMatcher<T>(Comparator.EQ, Integer.valueOf(count), anything());
+		return new MockSlf4jLoggerMatcher<T>(Comparator.EQ, Integer.valueOf(count), null);
 	}
 
 	public static <T> Matcher<T> hasEntriesCount(int count, Matcher<?> matcher) {
@@ -131,7 +151,7 @@ public class MockSlf4jLoggerMatcher<T> extends BaseMatcher<T> {
 	}
 
 	public static <T> Matcher<T> hasMoreEntriesThan(int count) {
-		return new MockSlf4jLoggerMatcher<T>(Comparator.GT, Integer.valueOf(count), anything());
+		return new MockSlf4jLoggerMatcher<T>(Comparator.GT, Integer.valueOf(count), null);
 	}
 
 	public static <T> Matcher<T> hasMoreEntriesThan(int count, Matcher<?> matcher) {
@@ -139,7 +159,7 @@ public class MockSlf4jLoggerMatcher<T> extends BaseMatcher<T> {
 	}
 
 	public static <T> Matcher<T> hasLessEntriesThan(int count) {
-		return new MockSlf4jLoggerMatcher<T>(Comparator.LT, Integer.valueOf(count), anything());
+		return new MockSlf4jLoggerMatcher<T>(Comparator.LT, Integer.valueOf(count), null);
 	}
 
 	public static <T> Matcher<T> hasLessEntriesThan(int count, Matcher<?> matcher) {
@@ -155,7 +175,7 @@ public class MockSlf4jLoggerMatcher<T> extends BaseMatcher<T> {
 	}
 
 	public static <T> Matcher<T> hasNoEntries() {
-		return new MockSlf4jLoggerMatcher<T>(Comparator.EQ, Integer.valueOf(0), anything());
+		return new MockSlf4jLoggerMatcher<T>(Comparator.EQ, Integer.valueOf(0), null);
 	}
 
 	public static <T> Matcher<T> hasNoEntries(Matcher<?> matcher) {
