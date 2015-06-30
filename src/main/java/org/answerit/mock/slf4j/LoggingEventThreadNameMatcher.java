@@ -13,7 +13,8 @@ public class LoggingEventThreadNameMatcher<T> extends BaseMatcher<T> {
 	}
 
 	public void describeTo(Description description) {
-		// TODO Auto-generated method stub
+		description.appendText("from thread with name ");
+		matcher.describeTo(description);
 	}
 
 	/**

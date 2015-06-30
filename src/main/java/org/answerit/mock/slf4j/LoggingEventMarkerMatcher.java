@@ -16,7 +16,10 @@ public class LoggingEventMarkerMatcher<T> extends BaseMatcher<T> {
 	}
 
 	public void describeTo(Description description) {
-		// TODO Auto-generated method stub
+		if(name == null)
+			description.appendText("contain no marker ");
+		else
+			description.appendText("contain marker ").appendValue(name);
 	}
 
 	/**

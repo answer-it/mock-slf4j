@@ -40,14 +40,25 @@ public class LoggingEventContextMatcher<T> extends BaseMatcher<T> {
 
 				return true;
 			}
+
+			@Override
+			public void describeTo(Description description) {
+				description.appendText("including ");
+			}
 		}, IDENTITY {
 			@Override
 			public boolean matches(Map<String, String> logMdc, Map<String, String> mdc) {
 				return Objects.equals(logMdc, mdc);
 			}
+
+			@Override
+			public void describeTo(Description description) {
+				description.appendText("equal to ");
+			}
 		};
 
 		abstract public boolean matches(Map<String, String> logMdc, Map<String, String> mdc);
+		abstract public void describeTo(Description description);
 	}
 
 
@@ -57,7 +68,9 @@ public class LoggingEventContextMatcher<T> extends BaseMatcher<T> {
 	}
 
 	public void describeTo(Description description) {
-		// TODO Auto-generated method stub
+		description.appendText("have context ");
+		matchAlgorithm.describeTo(description);
+		description.appendValue(mdc);
 	}
 
 	/**

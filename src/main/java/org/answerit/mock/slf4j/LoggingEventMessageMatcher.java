@@ -14,7 +14,8 @@ public class LoggingEventMessageMatcher<T> extends BaseMatcher<T> {
 	}
 
 	public void describeTo(Description description) {
-		// TODO Auto-generated method stub
+		description.appendText("have message ");
+		matcher.describeTo(description);
 	}
 
 	/**

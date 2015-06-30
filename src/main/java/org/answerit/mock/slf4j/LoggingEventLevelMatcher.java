@@ -15,7 +15,7 @@ public class LoggingEventLevelMatcher<T> extends BaseMatcher<T> {
 	}
 
 	public void describeTo(Description description) {
-		// TODO Auto-generated method stub
+		description.appendText("have logging level ").appendValue(level);
 	}
 
 	/**

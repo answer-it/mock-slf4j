@@ -25,14 +25,25 @@ public class LoggingEventParamsMatcher<T> extends BaseMatcher<T> {
 
 				return logParams.containsAll(params);
 			}
+
+			@Override
+			public void describeTo(Description description) {
+				description.appendText("including ");
+			}
 		}, IDENTITY {
 			@Override
 			public boolean matches(Collection<?> logParams, Collection<?> params) {
 				return Objects.equals(logParams, params);
 			}
+
+			@Override
+			public void describeTo(Description description) {
+				description.appendText("equal to ");
+			}
 		};
 
 		abstract public boolean matches(Collection<?> logParams, Collection<?> params);
+		abstract public void describeTo(Description description);
 	}
 
 
@@ -54,7 +65,9 @@ public class LoggingEventParamsMatcher<T> extends BaseMatcher<T> {
 	}
 
 	public void describeTo(Description description) {
-		// TODO Auto-generated method stub
+		description.appendText("have parameters array ");
+		matchAlgorithm.describeTo(description);
+		description.appendValue(params);
 	}
 
 	/**

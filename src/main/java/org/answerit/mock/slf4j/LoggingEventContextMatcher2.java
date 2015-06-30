@@ -18,7 +18,8 @@ public class LoggingEventContextMatcher2<T> extends BaseMatcher<T> {
 	}
 
 	public void describeTo(Description description) {
-		// TODO Auto-generated method stub
+		description.appendText("have context containing key ").appendValue(key).appendText(" with value ");
+		valueMatcher.describeTo(description);
 	}
 
 	/**

@@ -13,7 +13,8 @@ public class LoggingEventCauseMsgMatcher<T> extends BaseMatcher<T> {
 	}
 
 	public void describeTo(Description description) {
-		// TODO Auto-generated method stub
+		description.appendText("have cause with message ");
+		matcher.describeTo(description);
 	}
 
 	/**
