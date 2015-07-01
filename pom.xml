@@ -4,16 +4,32 @@
 
 	<groupId>org.answer-it</groupId>
 	<artifactId>mock-slf4j</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<name>mock-slf4j</name>
+	<description>Mock for slf4j Logger</description>
 	<url>https://github.com/answer-it/mock-slf4j/</url>
 
 	<organization>
 		<name>anSWer IT</name>
 		<url>http://www.answer-it.org/</url>
 	</organization>
+
+	<developers>
+		<developer>
+			<id>nikelblue</id>
+			<name>Daniel</name>
+			<email>contact@answer-it.org</email>
+			<organization>anSWer IT</organization>
+			<organizationUrl>http://www.answer-it.org</organizationUrl>
+			<roles>
+				<role>Project-Administrator</role>
+				<role>Developer</role>
+			</roles>
+			<timezone>+2</timezone>
+		</developer>
+	</developers>
 
 	<licenses>
 		<license>
