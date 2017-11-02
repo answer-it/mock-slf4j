@@ -3,9 +3,9 @@
 ##About mock-slf4j
 This library was born from my own needs. I would like to share it with you hopping that it will help you, too. I have been searching a while for the best approach on how to mock and query `static` and `final` loggers. The first thing that can be done is to make use of [PowerMock](https://code.google.com/p/powermock/). That powerful indeed library helps you to mock `static` and `final` fields. That's easy. The hard work begins after. You need to collect logged data and to query for what you want to test, most commonly for the message and the logging level. The things get more complicated when you want to take into consideration for your test the mapped diagnostic context (MDC), the markers or the message format parameters. More data has to be collected and queried. This is boring and error prone job. Here this library comes into the picture. Its goal is to help you to get rid of the hard work and let you focus on testing the logged data, which should be your main goal.
 
-##How to use
+## How to use
 
-###Mocking static logger
+### Mocking static logger
 
 ```java
 import org.slf4j.Logger;
@@ -34,7 +34,7 @@ public class MockSlf4jTest
 }
 ```
 
-###Mocking non-static logger
+### Mocking non-static logger
 
 ```java
 import org.slf4j.Logger;
@@ -62,9 +62,9 @@ public class MockSlf4jTest
 	}
 }
 ```
-###Testing logged data
+### Testing logged data
 
-####Test log entries count
+#### Test log entries count
 
 ```java
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
@@ -74,7 +74,7 @@ import static org.junit.Assert.assertThat;
 assertThat(mockedLogger, hasEntriesCount(5));
 ```
 
-####Test message content
+#### Test message content
 ```java
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasAtLeastOneEntryThat;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveMessage;
@@ -91,7 +91,7 @@ assertThat(logger, hasAtLeastOneEntry(that(haveMessage(equalTo("Message")))));
 assertThat(logger, hasAtLeastOneEntry(that(haveMessage(that(startsWith("Hello"))))));
 ```
 
-###Test message format parameters
+### Test message format parameters
 ```java
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveNoParam;
@@ -110,7 +110,7 @@ assertThat(mockedLogger, hasEntriesCount(1, that(containParams(p1, p2))));
 assertThat(mockedLogger, hasEntriesCount(1, that(haveParams(p1, p2, p3))));
 ```
 
-####Test logging level
+#### Test logging level
 ```java
 import static org.answerit.mock.slf4j.LoggingEventLevelMatcher.haveLevel;
 import static org.answerit.mock.slf4j.LoggingLevel.DEBUG;
@@ -129,7 +129,7 @@ assertThat(mockedLogger, hasEntriesCount(3, that(haveLevel(WARN))));
 assertThat(mockedLogger, hasEntriesCount(2, that(haveLevel(ERROR))));
 ```
 
-####Test mapped diagnostic context (MDC)
+#### Test mapped diagnostic context (MDC)
 ```java
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.containMDC;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
@@ -142,7 +142,7 @@ assertThat(logger, hasEntriesCount(2, that(containMDC("key1", "val1"))));
 assertThat(logger, hasEntriesCount(1, that(haveMDC("key1","val1","key2","val2","key3","val3"))));
 ```
 
-####Test markers
+#### Test markers
 ```java
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.containAtLeastOneMarker;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.containMarker;
@@ -155,7 +155,7 @@ assertThat(logger, hasEntriesCount(1, that(containNoMarker())));
 assertThat(logger, hasEntriesCount(2, that(containMarker("MARKER_NAME"))));
 ```
 
-####Test cause
+#### Test cause
 ```java
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasEntriesCount;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.haveCause;
@@ -172,7 +172,7 @@ assertThat(logger, hasEntriesCount(1, that(haveCause(instanceOf(NullPointerExcep
 assertThat(logger, hasEntriesCount(1, that(haveCauseMessage(that(containsString("Invalid parameter"))))));
 ```
 
-####Test thread
+#### Test thread
 ```java
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.hasAtLeastOneEntry;
 import static org.answerit.mock.slf4j.MockSlf4jMatchers.fromThreadWithName;
@@ -182,7 +182,7 @@ import static org.junit.Assert.assertThat;
 assertThat(logger, hasAtLeastOneEntry(fromThreadWithName(equalTo("main"))));
 ```
 
-####More complex test
+#### More complex test
 ```java
 Map<String, String> contextMap = new HashMap<String, String>();
 contextMap.put("authenticationToken", null);
